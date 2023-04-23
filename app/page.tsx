@@ -1,5 +1,9 @@
 export default function HomePage() {
     return (
-        <div>Landing</div>
+        <div>
+            <h1 className=" text-lg">
+                Landing    
+            </h1>
+        </div>
     )
 }

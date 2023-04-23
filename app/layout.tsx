@@ -7,7 +7,6 @@ export default function RootLayout({
 }) {
     return (
         <html>
-            <main>
                 <nav>
                     <Link href="/">
                         Home
@@ -23,7 +22,6 @@ export default function RootLayout({
                     </Link>
                 </nav>
                 {children}
-            </main>
         </html>
     )
 }
