@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: 'planetkosmos';
+    src: url('./assets/fonts/Planet-Kosmos.TTF');
+    font-weight: normal;
+    font-style: normal;
+}
