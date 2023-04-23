@@ -1,21 +1,28 @@
-import { google } from 'googleapis';
+const { GoogleSpreadsheet } = require('google-spreadsheet');
 
-export async function getServerSideProps({ query }) {
+// Config variables
+const SPREADSHEET_ID = process.env.NEXT_PUBLIC_SPREADSHEET_ID;
+const SHEET_ID = process.env.NEXT_PUBLIC_SHEET_ID;
+const GOOGLE_CLIENT_EMAIL = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_EMAIL;
+const GOOGLE_SERVICE_PRIVATE_KEY =
+  process.env.GOOGLE_SERVICE_PRIVATE_KEY.replace(/\\n/g, '\n');
 
-  const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'] });
+export async function getData() {
 
-  const sheets = google.sheets({ version: 'v4', auth });
+  const doc = new GoogleSpreadsheet(SHEET_ID);
 
-  const response = await sheets.spreadsheets.values.get({
-    spreadsheetId: process.env.SHEET_ID
+  await doc.useServiceAccountAuth({
+    client_email: GOOGLE_CLIENT_EMAIL,
+    private_key: GOOGLE_SERVICE_PRIVATE_KEY,
   });
 
-  const [show, info, link] = response.data.values[0];
-  console.log(show, info, link);
+  await doc.loadInfo();
+  console.log(doc.title);
 
-  return {
-    props : {
-      show, info, link
-    }
-  }
+  const sheet = doc.sheetsByIndex[0];
+  console.log(sheet.title);
+  console.log(sheet.rowCount);
+  const showData = doc.loadInfo;
+
+  return showData;
 }
