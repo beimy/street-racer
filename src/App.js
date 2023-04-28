@@ -19,8 +19,6 @@ function App() {
     document.title = 'Street Racer'
   });
 
-  
-  
   return (
     <Router>
       <SiteProvider>
