@@ -19,8 +19,6 @@ function App() {
     document.title = 'Street Racer'
   });
 
-  
-  
   return (
     <Router>
       <SiteProvider>
@@ -29,7 +27,7 @@ function App() {
             <Nav />
               <Routes>
                 <Route 
-                  path='/'
+                  path='/street-racer'
                   element={<LandingPage />}
                 />
                 <Route 
@@ -49,7 +47,7 @@ function App() {
                   element={<InfoPage />}
                 />
 
-                <Route path="" element={ <Navigate to="/" /> }  />
+                <Route path="" element={ <Navigate to="/street-racer" /> }  />
               </Routes>
           </div>
       </SiteProvider>

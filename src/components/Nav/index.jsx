@@ -5,7 +5,7 @@ import { Menu, Transition } from '@headlessui/react';
 const Nav = ({}) => {
 
   const navigate = useNavigate();
-  const handleHomeClick = () => navigate('/');
+  const handleHomeClick = () => navigate('/street-racer');
 
   return (
       <Menu as="div" className="relative flex text-left p-2 justify-between align-middle shadow-md z-100">
