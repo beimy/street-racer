@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import useGoogleSheets from 'use-google-sheets';
 import { useSiteContext } from '../../utils/GlobalState';
-import { GET_DATA_FROM_DB } from '../../utils/actions';
+import { GET_DATA_FROM_DB, SET_LOADING } from '../../utils/actions';
 
 const GoogleSheet = () => {
 
@@ -22,7 +22,10 @@ const GoogleSheet = () => {
   function returnData(data) {
     console.log(data);
     dispatch({ type: GET_DATA_FROM_DB, new_show_data : data[0],
-      new_merch_data : data[1]});
+      new_merch_data : data[1],
+      new_media_data : data[2],
+      new_about_data : data[3]});
+    dispatch({ type: SET_LOADING, new_isLoading : false});
     setLoading(false);
   }
 

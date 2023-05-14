@@ -8,7 +8,11 @@ const SiteProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useProductReducer({
         errorModalOpen: false,
         show_data: [],
-        merch_data: []
+        merch_data: [],
+        media_data: [],
+        about_data: '',
+        sections: ['info', 'media', 'shows', 'merch'],
+        isLoading : true
     });
 
     // console.log(state);
